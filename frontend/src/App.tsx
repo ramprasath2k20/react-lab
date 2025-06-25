@@ -1,4 +1,3 @@
-import React from 'react'
 import Login from './pages/Login/login'
 import './App.css'
 

@@ -34,7 +34,7 @@ const Login = () => {
         setErrors(newErrors);
         return isValid;
     };
-    
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validateForm()) {
@@ -45,10 +45,10 @@ const Login = () => {
     return (
         <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
             <div className="row w-100" style={{ maxWidth: '900px' }}>
-            <div className="col-md-6 text-start" style={{ padding: '50px' }}>
-                <h2>Sign In</h2>
-                <p>New user? <a href="#create-account">Create an account</a></p>
-                <Form onSubmit={handleSubmit}>
+                <div className="col-md-6 text-start" style={{ padding: '50px' }}>
+                    <h2>Sign In</h2>
+                    <p>New user? <a href="#create-account">Create an account</a></p>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formUsername">
                             <Form.Control
                                 type="text"
@@ -93,10 +93,10 @@ const Login = () => {
                             <span className="material-icons">facebook</span>
                         </div>
                     </Form>
-            </div>
-            <div className="col-md-6 d-flex align-items-center justify-content-center">
-                <img src={baimage} alt="Background" className="img-fluid" />
-            </div>
+                </div>
+                <div className="col-md-6 d-flex align-items-center justify-content-center">
+                    <img src={baimage} alt="Background" className="img-fluid" />
+                </div>
             </div>
         </div>
     );
