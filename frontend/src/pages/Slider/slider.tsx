@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
-import { Button, Card } from 'react-bootstrap';
+import { Button, } from 'react-bootstrap';
 import asseticon from '../../assets/next-icon.svg';
 const Slider: React.FC = () => {
   const { filteredCountries } = useSelector((state: RootState) => state.country);
