@@ -2,7 +2,10 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import baimage from '../../assets/image.png'
+import socialicon from '../../assets/social-icons.png'
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
+    const navigate = useNavigate();
     // This is a simple login component using React and Bootstrap.
     const [validation, setValidation] = useState({
         username: '',
@@ -38,8 +41,7 @@ const Login = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (validateForm()) {
-            // Redirect to home page on successful validation
-            // navigate('/home');
+            navigate('/dashboard'); // Redirect to dashboard on successful validation
         }
     };
     return (
@@ -87,10 +89,7 @@ const Login = () => {
                             <hr className="flex-grow-1" />
                         </div>
                         <div className="d-flex gap-2 justify-content-center">
-                            <span className="material-icons">facebook</span>
-                            <span className="material-icons">facebook</span>
-                            <span className="material-icons">facebook</span>
-                            <span className="material-icons">facebook</span>
+                          <img src={socialicon} style={{width:"150px"}}></img>
                         </div>
                     </Form>
                 </div>
