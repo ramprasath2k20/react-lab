@@ -7,6 +7,8 @@ import Slider from '../Slider/slider';
 import CountryList from '../Country/countrylist';
 import { Container, Alert, Row, Col, Card } from 'react-bootstrap';
 import FooterImage from '../../assets/social-icons.png'
+import Spinner from 'react-bootstrap/Spinner';
+
 const Dashboard: React.FC = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { status, error } = useSelector((state: RootState) => state.country);
@@ -20,7 +22,7 @@ const Dashboard: React.FC = () => {
     return (
       <Container>
         <Header />
-        {status === 'loading' && <p>Loading...</p>}
+        
         {status === 'failed' && <Alert variant="danger">{error}</Alert>}
         <Row className="text-center my-3">
           <Col>
@@ -31,6 +33,11 @@ const Dashboard: React.FC = () => {
             </div>
           </Col>
         </Row>
+        {status === 'loading' && (
+            <div className='text-center my-5'>
+             <Spinner animation="border"></Spinner>
+            </div>
+        )}
         <Row className="text-center mb-4">
           <Col md={10}>
             <Card className="mb-4 bg-light text-center h-100">
