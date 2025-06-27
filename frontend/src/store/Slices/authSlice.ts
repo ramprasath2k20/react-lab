@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import  type { PayloadAction } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface AuthState {
   isAuthenticated: boolean;
@@ -14,7 +14,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<{ username: string; password: string }>) => {
-      state.isAuthenticated = true; // Trust frontend validation
+      // Example: Mock validation compatible with Login.tsx regex
+      const { username, password } = action.payload;
+      const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (username && passwordRegex.test(password)) {
+        state.isAuthenticated = true;
+      }
     },
     logout: (state) => {
       state.isAuthenticated = false;

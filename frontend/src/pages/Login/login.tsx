@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button } from 'react-bootstrap';
 import { login } from '../../store/Slices/authSlice';
-import type { RootState } from '../../store/store';
 import baimage from '../../assets/image.png';
 import socialicon from '../../assets/social-icons.png';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const [validation, setValidation] = useState({
     username: '',
     password: '',
@@ -46,16 +44,11 @@ const Login: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      dispatch(login({ username: validation.username, password: validation.password }));
-      // Check authentication state after dispatch
-      if (isAuthenticated) {
-        navigate('/dashboard');
-      } else {
-        setErrors((prev) => ({
-          ...prev,
-          password: 'Invalid username or password',
-        }));
-      }
+      dispatch(login({
+        username: validation.username,
+        password: validation.password,
+      }));
+      navigate('/dashboard');
     }
   };
 
