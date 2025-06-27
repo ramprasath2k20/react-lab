@@ -14,10 +14,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<{ username: string; password: string }>) => {
-      // Mock validation
-      if (action.payload.username === 'admin' && action.payload.password === 'password') {
-        state.isAuthenticated = true;
-      }
+      state.isAuthenticated = true; // Trust frontend validation
     },
     logout: (state) => {
       state.isAuthenticated = false;
