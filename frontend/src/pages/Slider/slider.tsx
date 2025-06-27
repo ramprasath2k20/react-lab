@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
 import { Button, } from 'react-bootstrap';
+import BackIcon from '../../assets/next-icon.svg'
 const Slider: React.FC = () => {
   const { filteredCountries } = useSelector((state: RootState) => state.country);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -29,10 +30,14 @@ const Slider: React.FC = () => {
         <p>{featuredCountries[currentIndex].region}</p>
       </div>
       <Button className="slider-nav slider-prev" onClick={handlePrev}>
-        <img src="/assets/prev-icon.svg" alt="Previous" />
+        <img
+          src={BackIcon}
+          alt="Previous"
+          style={{ transform: 'rotate(180deg)' }}
+        />
       </Button>
       <Button className="slider-nav slider-next" onClick={handleNext}>
-        <img src="/assets/next-icon.svg" alt="Next" />
+        <img src={BackIcon} alt="Next" />
       </Button>
       <div className="slider-dots">
         {featuredCountries.map((_, index) => (

@@ -14,7 +14,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action: PayloadAction<{ username: string; password: string }>) => {
-      // Example: Mock validation compatible with Login.tsx regex
       const { username, password } = action.payload;
       const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
       if (username && passwordRegex.test(password)) {
