@@ -2,18 +2,16 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../store/store';
 import { Button, } from 'react-bootstrap';
-import asseticon from '../../assets/next-icon.svg';
 const Slider: React.FC = () => {
   const { filteredCountries } = useSelector((state: RootState) => state.country);
   const [currentIndex, setCurrentIndex] = useState(0);
-
   const featuredCountries = filteredCountries.slice(0, 5); // Show first 5 countries
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % featuredCountries.length);
   };
 
-  const handlePrev = () => {
+   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + featuredCountries.length) % featuredCountries.length);
   };
 
@@ -24,18 +22,17 @@ const Slider: React.FC = () => {
   if (featuredCountries.length === 0) return null;
 
   return (
-    
-    <div className="slider-container ">
-      <div className="slider-item mt-3 mb-3">
+    <div className="slider-container">
+      <div className="slider-item">
         <img src={featuredCountries[currentIndex].flag} alt={featuredCountries[currentIndex].name} />
         <h3>{featuredCountries[currentIndex].name}</h3>
         <p>{featuredCountries[currentIndex].region}</p>
       </div>
-      <Button className="slider-nav slider-prev " onClick={handlePrev}>
-      <img src={asseticon} alt="Next"  />
+      <Button className="slider-nav slider-prev" onClick={handlePrev}>
+        <img src="/assets/prev-icon.svg" alt="Previous" />
       </Button>
       <Button className="slider-nav slider-next" onClick={handleNext}>
-        <img src={asseticon} alt="Next" />
+        <img src="/assets/next-icon.svg" alt="Next" />
       </Button>
       <div className="slider-dots">
         {featuredCountries.map((_, index) => (
@@ -47,9 +44,8 @@ const Slider: React.FC = () => {
         ))}
       </div>
     </div>
-
-   
   );
 };
+
 
 export default Slider;
